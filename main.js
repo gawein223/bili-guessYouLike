@@ -1,7 +1,7 @@
 const LOG_PREFIX = '[哔哩哔哩猜你喜欢]';
 
 let activeTab = null; // 当前tab
-let recommandMax = 12; // 一次获取几个推荐视频
+let recommandMax = 14; // 一次获取几个推荐视频
 
 // ajax
 const HTTP = {
@@ -230,12 +230,20 @@ const UI = {
 				const styleSheet = document.createElement('style');
 				const styleList = [
 					// 把猜你喜欢视频平铺占满100%，每行显示6个
-					'#_bili_guessyoulike .zone-list-box { width: 100% !important; }' + 
-					'#_bili_guessyoulike .video-card-common { width: 15.6%; }' +
+					'#_bili_guessyoulike .zone-list-box { width: 100% !important; justify-content: space-evenly; }' + 
+					'#_bili_guessyoulike .video-card-common { width: 206px; }' +
 					'#_bili_guessyoulike .video-card-common:nth-child(n+9) { display: block; }' +
+					'@media screen and (max-width:1654px) { ' + 
+						'#_bili_guessyoulike .video-card-common { width: 206px; }' +
+						'#_bili_guessyoulike .video-card-common:nth-child(n+11) { display: none; }' +
+					'}' +
+					'@media screen and (max-width:1870px) { ' + 
+						'#_bili_guessyoulike .video-card-common { width: 206px; }' +
+						'#_bili_guessyoulike .video-card-common:nth-child(n+13) { display: none; }' +
+					'}' +
 					// 1438px以下宽度时每行只显示5个视频，不然太密集了
 					'@media screen and (max-width: 1438px) { ' + 
-						'#_bili_guessyoulike .video-card-common { width: 19%; }' +
+						'#_bili_guessyoulike .video-card-common { width: 170px; }' +
 						'#_bili_guessyoulike .video-card-common:nth-child(n+11) { display: none; }' +
 					'}'
 				]
